@@ -1,0 +1,19 @@
+#createPerson {
+    border: #000000 1px solid;
+    padding: 5px;
+    text-align: left;
+    width: 250px;
+    background-color: cornsilk;
+}
+
+#createPerson p {
+    display: inline;
+}
+
+nav button {
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    background-color: #9085ff;
+    width: 50px;
+}
