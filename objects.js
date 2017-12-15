@@ -1,4 +1,6 @@
-console.log('pizza');
+var sections = [];
+var teachers = [];
+var students = [];
 
 function Person(id, firstName, lastName) {
     this.ID = id;
@@ -6,8 +8,9 @@ function Person(id, firstName, lastName) {
     this.lastName = lastName;
 }
 
-function Student(grade) {
+function Student(fistName, lastName, grade) { //incorporate lastname and firstname
     this.grade = grade;
+    this.call = firstName; // ?? look this up
 }
 
 function Teacher(subject) {
@@ -37,20 +40,10 @@ function Section(name, maxSize, teacher) {
     }
 }
 
-function createPerson() {
-    var firstName = document.getElementById('firstName').value;
-    var lastName = document.getElementById('lastName').value;
-
-}
-
-function displaySection(id) {
-    document.getElementById(id).style.display = 'block';
-}
-
-/////// TESTING STUFF /////////
 Student.prototype = new Person;
 Teacher.prototype = new Person;
 
+/////// TESTING STUFF /////////
 var luca = new Student(90);
 luca.firstName = 'Luca';
 luca.lastName = 'Spycher';
