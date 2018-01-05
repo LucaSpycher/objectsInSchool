@@ -10,9 +10,10 @@
 <body>
 <nav>
     <button onclick="displaySection('createPerson')">Create Person</button>
-    <button onclick="displaySection('addPerson')">Add Person</button>
-    <button></button>
-    <button></button>
+    <button onclick="displaySection('addStudent')">Add Student to Section</button>
+    <button onclick="displaySection('removeStudent')">Remove Student From Section</button>
+    <button onclick="displaySection('createSection')">Create Section</button>
+    <button onclick="displaySection('searchStudent')">Search For a Student</button>
     <button onclick="displaySection('sections')">View Sections</button>
 </nav>
 <br>
@@ -33,21 +34,75 @@
     <input id="ID">
     <br>
     <div id="student" class="display">
-    Grade: <input id="grade">
+        Grade:
+        <select id="grade">
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+        </select>
     </div>
     <div id="teacher" class="display">
     <label for="subject">Subject: </label>
     <input id="subject">
     </div>
-    <button onclick="createPerson()">Go</button>
+    <button class="goButton" onclick="createPerson()">Go</button>
 </div>
 
-<div id="addPerson">
-    Name: <input id="name">
+<div id="addStudent">
+    <button onclick="generateSelect(students, 0)">select a student</button>
+    <select class="hiddenSelect" id="selectStudent">
+    </select>
     <br>
-    <button>Go</button>
+    <button onclick="generateSelect(sections, 1)">select a section</button>
+    <select class="hiddenSelect" id="selectSectionStudent">
+    </select>
+    <button class="goButton" onclick="addStudent()">Go</button>
 </div>
 
-<div id="sections"></div>
+<div id="removeStudent">
+    <label for="studentRemoveID">Student ID:</label>
+    <input id="studentRemoveID">
+    <br>
+    <button onclick="generateSelect(sections, 2)">select a section</button>
+    <select class="hiddenSelect" id="selectSectionStudentRemove">
+    </select>
+    <button class="goButton" onclick="removeStudent()">Go</button>
+</div>
+
+<div id="searchStudent">
+    <label for="searchStudentInput">Student First Name:</label>
+    <input id="searchStudentInput">
+    <button class="goButton" onclick="searchStudent()">Go</button>
+</div>
+
+<div id="searchOutput">
+    Results:
+    <div id="studentSearchOutput"></div>
+</div>
+<div id="createSection">
+    <label for="sectionName">Section Name:</label>
+    <input id="sectionName">
+    <br>
+    <label for="sectionMaxSize">Section Max Size:</label>
+    <input id="sectionMaxSize">
+    <br>
+    <button onclick="generateSelect(teachers, 3)">Select a teacher</button>
+    <select id="selectTeacher" class="hiddenSelect"></select>
+    <button class="goButton" onclick="createSection()">Go</button>
+</div>
+
+<div id="sections">
+    <div>
+
+    </div>
+    <!--<table>-->
+        <!--<tr>-->
+            <!--<th>Sections</th>-->
+            <!--<th>Teachers</th>-->
+            <!--<th>Students</th>-->
+        <!--</tr>-->
+    <!--</table>-->
+</div>
 </body>
 </html>

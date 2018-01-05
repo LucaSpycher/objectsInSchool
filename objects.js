@@ -1,19 +1,16 @@
-var sections = [];
-var teachers = [];
-var students = [];
-
 function Person(id, firstName, lastName) {
     this.ID = id;
     this.firstName = firstName;
     this.lastName = lastName;
 }
 
-function Student(fistName, lastName, grade) { //incorporate lastname and firstname
+function Student(id, firstName, lastName, grade) {
+    Person.call(this, id, firstName, lastName);
     this.grade = grade;
-    this.call = firstName; // ?? look this up
 }
 
-function Teacher(subject) {
+function Teacher(id, firstName, lastName, subject) {
+    Person.call(this, id, firstName, lastName);
     this.subject = subject;
 }
 
@@ -43,19 +40,12 @@ function Section(name, maxSize, teacher) {
 Student.prototype = new Person;
 Teacher.prototype = new Person;
 
-/////// TESTING STUFF /////////
-var luca = new Student(90);
-luca.firstName = 'Luca';
-luca.lastName = 'Spycher';
-luca.ID = '1234567';
-var albinson = new Teacher('computer science');
-albinson.firstName = 'Matt';
-albinson.lastName = 'Albinson';
+////////// DUMMY DATA //////////////
+var luca = new Student(12345, 'Luca', 'Spycher', 11);
+var albinson = new Teacher(67890, 'Matt', 'Albinson', 'computer science');
+var compSci = new Section('compSci', 30, albinson);
+compSci.addStudent(luca);
 
-var compSci = new Section('Computer Science', 30, albinson);
-compSci.addStudent(luca);
-console.log(compSci);
-compSci.removeStudent('1234567');
-console.log(compSci);
-compSci.addStudent(luca);
-console.log(compSci);
+var sections = [compSci];
+var teachers = [albinson];
+var students = [luca];
