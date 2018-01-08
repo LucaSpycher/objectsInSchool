@@ -59,10 +59,10 @@ body>div>* {
 #sections {
     background-color: aliceblue;
     width: 75%;
-
+    padding: 5px;
 }
 
-.display {
+.hide {
     display: none;
 }
 
@@ -72,4 +72,8 @@ body>div>* {
 
 .hiddenSelect{
     display: none;
+}
+
+#sections>div {
+    border: solid black 2px;
 }

@@ -25,6 +25,7 @@ function displaySection(id) {
             document.getElementById(ids[i]).style.display = 'none';
         }
     }
+    document.getElementById('searchStudentInput').value = '';
 }
 
 function changeStuTeach() {
@@ -81,19 +82,28 @@ function createSection() {
     var teacherIndex = document.getElementById('selectTeacher').value;
     sections.push(new Section(sectionName, sectionMaxSize, teachers[teacherIndex]));
     document.getElementById('createSection').style.display = 'none';
-    document.getElementById('sectionName').value = 'none';
-    document.getElementById('sectionMaxSize').value = 'none';
+    document.getElementById('sectionName').value = '';
+    document.getElementById('sectionMaxSize').value = '';
     document.getElementById('selectTeacher').value = '';
     document.getElementById('selectTeacher').style.display = 'none';
 }
 
 function searchStudent() { // finish this function
     var name = document.getElementById('searchStudentInput').value;
+    document.getElementById('studentSearchOutput').innerHTML = '';
+    document.getElementById('searchOutput').style.display = 'block';
     for(var l = 0; l < sections.length; l++) {
         for(var i = 0; i < sections[l].students.length; i++) {
-            if(sections[l].students.firstName == name) {
-                document.getElementById('studentSearchOutput').innerHTML += sections[l].students[i].firstName + " " + sections[l].students[i].lastName
+            if(sections[l].students[i].firstName == name) {
+                document.getElementById('studentSearchOutput').innerHTML += "<li>"+sections[l].name+"</li>";
             }
         }
+    }
+}
+
+function showSections() {
+    document.getElementById('sections').innerHTML = "";
+    for(var i = 0; i < sections.length; i++) {
+        document.getElementById('sections').innerHTML += "<div id="+sections[i].name+"><h3 style='text-align: center'>"+sections[i].name+"</h3></div>";
     }
 }

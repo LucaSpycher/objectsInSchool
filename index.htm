@@ -14,7 +14,7 @@
     <button onclick="displaySection('removeStudent')">Remove Student From Section</button>
     <button onclick="displaySection('createSection')">Create Section</button>
     <button onclick="displaySection('searchStudent')">Search For a Student</button>
-    <button onclick="displaySection('sections')">View Sections</button>
+    <button onclick="displaySection('sections'), showSections()">View Sections</button>
 </nav>
 <br>
 <div id="createPerson">
@@ -33,7 +33,7 @@
     <label for="ID">ID:</label>
     <input id="ID">
     <br>
-    <div id="student" class="display">
+    <div id="student" class="hide">
         Grade:
         <select id="grade">
             <option value="9">9</option>
@@ -42,7 +42,7 @@
             <option value="12">12</option>
         </select>
     </div>
-    <div id="teacher" class="display">
+    <div id="teacher" class="hide">
     <label for="subject">Subject: </label>
     <input id="subject">
     </div>
@@ -77,8 +77,8 @@
 </div>
 
 <div id="searchOutput">
-    Results:
-    <div id="studentSearchOutput"></div>
+    <h4>Sections that they are in:</h4>
+    <ul id="studentSearchOutput"></ul>
 </div>
 <div id="createSection">
     <label for="sectionName">Section Name:</label>
@@ -93,9 +93,7 @@
 </div>
 
 <div id="sections">
-    <div>
 
-    </div>
     <!--<table>-->
         <!--<tr>-->
             <!--<th>Sections</th>-->
