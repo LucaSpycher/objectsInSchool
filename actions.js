@@ -1,4 +1,4 @@
-console.log('hi');
+console.log('pasta');
 
 function createPerson() {
     var stuTeach = document.getElementById('stuTeach').value;
@@ -8,13 +8,17 @@ function createPerson() {
     var a = [students, teachers];
     var b = [document.getElementById('grade').value, document.getElementById('subject').value];
     var c = [Student, Teacher];
-    a[stuTeach].push(new c[stuTeach](id, firstName, lastName, b[stuTeach]));
-    document.getElementById('createPerson').style.display = 'none';
-    document.getElementById('firstName').value = '';
-    document.getElementById('lastName').value = '';
-    document.getElementById('ID').value = '';
-    document.getElementById('subject').value = '';
-    document.getElementById('grade').value = '';
+    if (stuTeach !== "" && firstName !== "" && lastName !== "" && id !== "") {
+        if(b[stuTeach] !== "") {
+            a[stuTeach].push(new c[stuTeach](id, firstName, lastName, b[stuTeach]));
+            document.getElementById('createPerson').style.display = 'none';
+            document.getElementById('firstName').value = '';
+            document.getElementById('lastName').value = '';
+            document.getElementById('ID').value = '';
+            document.getElementById('subject').value = '';
+            document.getElementById('grade').value = '';
+        }
+    }
 }
 
 function displaySection(id) {
@@ -32,9 +36,9 @@ function changeStuTeach() {
     var select = document.getElementById('stuTeach').value;
     for(var i = 0; i < 2; i++) {
         if(select == i) {
-            document.getElementsByClassName('display')[i].style.display = 'block';
+            document.getElementsByClassName('hide')[i].style.display = 'block';
         } else {
-            document.getElementsByClassName('display')[i].style.display = 'none';
+            document.getElementsByClassName('hide')[i].style.display = 'none';
         }
     }
 }
@@ -56,39 +60,45 @@ function generateSelect(arr, num) {
 function addStudent() {
     var studentIndex = document.getElementById('selectStudent').value;
     var sectionIndex = document.getElementById('selectSectionStudent').value;
-    sections[sectionIndex].addStudent(students[studentIndex]);
-    document.getElementById('addStudent').style.display = 'none';
-    document.getElementById('selectStudent').value = '';
-    document.getElementById('selectSectionStudent').value = '';
-    document.getElementById('selectStudent').style.display = 'none';
-    document.getElementById('selectSectionStudent').style.display = 'none';
+    if (studentIndex !== "" && sectionIndex !== "") {
+        sections[sectionIndex].addStudent(students[studentIndex]);
+        document.getElementById('addStudent').style.display = 'none';
+        document.getElementById('selectStudent').value = '';
+        document.getElementById('selectSectionStudent').value = '';
+        document.getElementById('selectStudent').style.display = 'none';
+        document.getElementById('selectSectionStudent').style.display = 'none';
+    }
 }
 
 function removeStudent() {
     var studentID = document.getElementById('studentRemoveID').value;
     var sectionIndex = document.getElementById('selectSectionStudentRemove').value;
-    for(var i = 0; i < students.length; i++) {
-        sections[sectionIndex].removeStudent(studentID);
+    if(sectionIndex !== "") {
+        for (var i = 0; i < students.length; i++) {
+            sections[sectionIndex].removeStudent(studentID);
+        }
+        document.getElementById('removeStudent').style.display = 'none';
+        document.getElementById('studentRemoveID').value = '';
+        document.getElementById('selectSectionStudentRemove').style.display = 'none';
+        document.getElementById('selectSectionStudentRemove').value = '';
     }
-    document.getElementById('removeStudent').style.display = 'none';
-    document.getElementById('studentRemoveID').value = '';
-    document.getElementById('selectSectionStudentRemove').style.display = 'none';
-    document.getElementById('selectSectionStudentRemove').value = '';
 }
 
 function createSection() {
     var sectionName = document.getElementById('sectionName').value;
     var sectionMaxSize = document.getElementById('sectionMaxSize').value;
     var teacherIndex = document.getElementById('selectTeacher').value;
-    sections.push(new Section(sectionName, sectionMaxSize, teachers[teacherIndex]));
-    document.getElementById('createSection').style.display = 'none';
-    document.getElementById('sectionName').value = '';
-    document.getElementById('sectionMaxSize').value = '';
-    document.getElementById('selectTeacher').value = '';
-    document.getElementById('selectTeacher').style.display = 'none';
+    if(sectionName.length > 0 && sectionMaxSize.length > 0 && teacherIndex !== "") {
+        sections.push(new Section(sectionName, sectionMaxSize, teachers[teacherIndex]));
+        document.getElementById('createSection').style.display = 'none';
+        document.getElementById('sectionName').value = '';
+        document.getElementById('sectionMaxSize').value = '';
+        document.getElementById('selectTeacher').value = '';
+        document.getElementById('selectTeacher').style.display = 'none';
+    }
 }
 
-function searchStudent() { // finish this function
+function searchStudent() {
     var name = document.getElementById('searchStudentInput').value;
     document.getElementById('studentSearchOutput').innerHTML = '';
     document.getElementById('searchOutput').style.display = 'block';
@@ -104,6 +114,11 @@ function searchStudent() { // finish this function
 function showSections() {
     document.getElementById('sections').innerHTML = "";
     for(var i = 0; i < sections.length; i++) {
-        document.getElementById('sections').innerHTML += "<div id="+sections[i].name+"><h3 style='text-align: center'>"+sections[i].name+"</h3></div>";
+        var sect = sections[i];
+        document.getElementById('sections').innerHTML += "<div id='"+i+"'><h3 style='text-align: center'>"+sect.name+"<br><em>"+sect.teacher.firstName+" "+sect.teacher.lastName+"</em></h3></div>";
+        document.getElementById(i.toString()).innerHTML += "<ul id="+i + 'students' + " class='students'></ul>";
+        for(var s = 0; s < sect.students.length; s++) {
+            document.getElementById(i + 'students').innerHTML += "<li>"+sect.students[s].firstName+" "+sect.students[s].lastName+"</li>";
+        }
     }
 }

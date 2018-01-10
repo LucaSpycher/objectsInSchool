@@ -77,3 +77,12 @@ body>div>* {
 #sections>div {
     border: solid black 2px;
 }
+
+.students {
+    overflow: auto;
+}
+
+.students li {
+    float: left;
+    margin-right: 25px;
+}

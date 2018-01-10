@@ -22,9 +22,19 @@ function Section(name, maxSize, teacher) {
     this.currentSize = this.students.length;
     this.seatsRemaining = this.maxSize - this.currentSize;
     this.addStudent = function (student) {
-        this.students.push(student);
-        this.currentSize++;
-        this.seatsRemaining--;
+        if(this.seatsRemaining > 0) {
+            var studentInSection = false;
+            for(var i = 0; i < this.students.length; i++) {
+                if(this.students[i] === student) {
+                    studentInSection = true;
+                }
+            }
+            if(!studentInSection) {
+                this.students.push(student);
+                this.currentSize++;
+                this.seatsRemaining--;
+            }
+        }
     };
     this.removeStudent = function (id) {
         for(var i = 0; i < this.students.length; i++) {
@@ -42,10 +52,21 @@ Teacher.prototype = new Person;
 
 ////////// DUMMY DATA //////////////
 var luca = new Student(12345, 'Luca', 'Spycher', 11);
+var joe = new Student(56789, 'Joe', 'McFlair', 9);
+var lena = new Student(54321, 'Lena', 'McDuncan', 10);
 var albinson = new Teacher(67890, 'Matt', 'Albinson', 'computer science');
-var compSci = new Section('compSci', 30, albinson);
+var henri = new Teacher(09876, 'Karl', 'Henri', 'math');
+var math = new Section('Math 2', 27, henri);
+var compSci = new Section('Computer Science', 30, albinson);
+compSci.addStudent(joe);
 compSci.addStudent(luca);
+compSci.addStudent(lena);
+math.addStudent(joe);
 
-var sections = [compSci];
+//var Joe = new Student(12345, 'Luca', 'Spycher', 11);
+//var  = new Teacher(67890, 'Matt', 'Albinson', 'computer science');
+//var compSci = new Section('compSci', 30, albinson);
+
+var sections = [compSci, math];
 var teachers = [albinson];
-var students = [luca];
+var students = [joe, luca, lena];
