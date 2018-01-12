@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    background-color: #1b1b1b;
+    background: fixed url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/dark-purple-flowing-waves_wk98bf-h__F0000.png");
 }
 
 body>div {
@@ -10,6 +10,8 @@ body>div {
 }
 
 nav {
+    position: fixed;
+    width: 100%;
     overflow: auto;
 }
 
@@ -44,22 +46,25 @@ body>div>* {
 .goButton {
     position: absolute;
     bottom: 5px;
-    right: 5px;
+    right: 7px;
 }
 
 #addStudent, #createPerson, #createSection, #removeStudent, #searchStudent, #searchOutput{
     position: relative;
-    border: solid black 1px;
+    border: solid #a908b1 2px;
     width: 300px;
-    margin: 0 auto;
+    margin: 2px auto;
     padding: 5px;
-    background-color: aliceblue;
+    background-color: white;
+    border-radius: 10px;
 }
 
 #sections {
-    background-color: aliceblue;
+    background-color: white;
     width: 75%;
     padding: 5px;
+    border: solid #a908b1 2px;
+    border-radius: 10px;
 }
 
 .hide {
@@ -76,6 +81,7 @@ body>div>* {
 
 #sections>div {
     border: solid black 2px;
+    border-radius: 5px;
 }
 
 .students {
@@ -85,4 +91,9 @@ body>div>* {
 .students li {
     float: left;
     margin-right: 25px;
+}
+
+#emptySpace {
+    display: block;
+    height: 31px;
 }

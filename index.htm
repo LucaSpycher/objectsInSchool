@@ -16,6 +16,7 @@
     <button onclick="displaySection('searchStudent')">Search For a Student</button>
     <button onclick="displaySection('sections'), showSections()">View Sections</button>
 </nav>
+<div id="emptySpace"></div>
 <br>
 <div id="createPerson">
     <p>Person:</p>
@@ -29,9 +30,6 @@
     <br>
     <label for="lastName">Last Name:</label>
     <input id="lastName">
-    <br>
-    <label for="ID">ID:</label>
-    <input id="ID">
     <br>
     <div id="student" class="hide">
         Grade:
@@ -62,7 +60,7 @@
 
 <div id="removeStudent">
     <label for="studentRemoveID">Student ID:</label>
-    <input id="studentRemoveID">
+    <input id="studentRemoveID" type="number">
     <br>
     <button onclick="generateSelect(sections, 2)">select a section</button>
     <select class="hiddenSelect" id="selectSectionStudentRemove">
@@ -85,7 +83,7 @@
     <input id="sectionName">
     <br>
     <label for="sectionMaxSize">Section Max Size:</label>
-    <input id="sectionMaxSize">
+    <input id="sectionMaxSize" type="number">
     <br>
     <button onclick="generateSelect(teachers, 3)">Select a teacher</button>
     <select id="selectTeacher" class="hiddenSelect"></select>

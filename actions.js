@@ -4,17 +4,15 @@ function createPerson() {
     var stuTeach = document.getElementById('stuTeach').value;
     var firstName = document.getElementById('firstName').value;
     var lastName = document.getElementById('lastName').value;
-    var id = document.getElementById('ID').value;
     var a = [students, teachers];
     var b = [document.getElementById('grade').value, document.getElementById('subject').value];
     var c = [Student, Teacher];
-    if (stuTeach !== "" && firstName !== "" && lastName !== "" && id !== "") {
+    if (stuTeach !== "" && firstName !== "" && lastName !== "") {
         if(b[stuTeach] !== "") {
-            a[stuTeach].push(new c[stuTeach](id, firstName, lastName, b[stuTeach]));
+            a[stuTeach].push(new c[stuTeach](firstName, lastName, b[stuTeach]));
             document.getElementById('createPerson').style.display = 'none';
             document.getElementById('firstName').value = '';
             document.getElementById('lastName').value = '';
-            document.getElementById('ID').value = '';
             document.getElementById('subject').value = '';
             document.getElementById('grade').value = '';
         }
@@ -115,10 +113,10 @@ function showSections() {
     document.getElementById('sections').innerHTML = "";
     for(var i = 0; i < sections.length; i++) {
         var sect = sections[i];
-        document.getElementById('sections').innerHTML += "<div id='"+i+"'><h3 style='text-align: center'>"+sect.name+"<br><em>"+sect.teacher.firstName+" "+sect.teacher.lastName+"</em></h3></div>";
-        document.getElementById(i.toString()).innerHTML += "<ul id="+i + 'students' + " class='students'></ul>";
+        document.getElementById('sections').innerHTML += "<div id="+sect.id+"><h3 style='text-align: center'>"+sect.name+"<br><em>"+sect.teacher.firstName+" "+sect.teacher.lastName+"</em></h3></div>";
+        document.getElementById(sect.id.toString()).innerHTML += "<ul id="+sect.id + 'students' + " class='students'></ul>";
         for(var s = 0; s < sect.students.length; s++) {
-            document.getElementById(i + 'students').innerHTML += "<li>"+sect.students[s].firstName+" "+sect.students[s].lastName+"</li>";
+            document.getElementById(sect.id + 'students').innerHTML += "<li>"+sect.students[s].firstName+" "+sect.students[s].lastName+"</li>";
         }
     }
 }
