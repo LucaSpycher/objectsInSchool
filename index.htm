@@ -9,12 +9,12 @@
 </head>
 <body>
 <nav>
-    <button onclick="displaySection('createPerson')">Create Person</button>
-    <button onclick="displaySection('addStudent')">Add Student to Section</button>
-    <button onclick="displaySection('removeStudent')">Remove Student From Section</button>
-    <button onclick="displaySection('createSection')">Create Section</button>
-    <button onclick="displaySection('searchStudent')">Search For a Student</button>
-    <button onclick="displaySection('sections'), showSections()">View Sections</button>
+    <button id="navButton0" onclick="displaySection('createPerson', 0)">Create Person</button>
+    <button id="navButton1" onclick="displaySection('addStudent', 1)">Add Student to Section</button>
+    <button id="navButton2" onclick="displaySection('removeStudent', 2)">Remove Student From Section</button>
+    <button id="navButton3" onclick="displaySection('createSection', 3)">Create Section</button>
+    <button id="navButton4" onclick="displaySection('searchStudent', 4)">Search For a Student</button>
+    <button id="navButton5" onclick="displaySection('sections', 5), showSections()">View Sections</button>
 </nav>
 <div id="emptySpace"></div>
 <br>
@@ -75,6 +75,12 @@
 </div>
 
 <div id="searchOutput">
+    <select id="studentSearchList"></select>
+    <button onclick="showStudentSections()">search</button>
+    <br>
+    <h4 class="inline">Grade: </h4> <p id="studentGrade" class="inline"></p>
+    <br>
+    <h4 class="inline">ID: </h4> <p id="studentId" class="inline"></p>
     <h4>Sections that they are in:</h4>
     <ul id="studentSearchOutput"></ul>
 </div>
