@@ -15,6 +15,8 @@
     <button id="navButton3" onclick="displaySection('createSection', 3)">Create Section</button>
     <button id="navButton4" onclick="displaySection('searchStudent', 4)">Search For a Student</button>
     <button id="navButton5" onclick="displaySection('sections', 5), showSections()">View Sections</button>
+    <button id="navButton6" onclick="displaySection('allStudents', 6), showAllStudents()">View Students</button>
+    <button id="navButton7" onclick="displaySection('allTeachers', 7), showAllTeachers()">View Teachers</button>
 </nav>
 <div id="emptySpace"></div>
 <br>
@@ -80,7 +82,7 @@
     <br>
     <h4 class="inline">Grade: </h4> <p id="studentGrade" class="inline"></p>
     <br>
-    <h4 class="inline">ID: </h4> <p id="studentId" class="inline"></p>
+    <h4 class="inline">Student ID: </h4> <p id="studentId" class="inline"></p>
     <h4>Sections that they are in:</h4>
     <ul id="studentSearchOutput"></ul>
 </div>
@@ -96,15 +98,9 @@
     <button class="goButton" onclick="createSection()">Go</button>
 </div>
 
-<div id="sections">
+<div id="sections"></div>
+<div id="allStudents"></div>
+<div id="allTeachers"></div>
 
-    <!--<table>-->
-        <!--<tr>-->
-            <!--<th>Sections</th>-->
-            <!--<th>Teachers</th>-->
-            <!--<th>Students</th>-->
-        <!--</tr>-->
-    <!--</table>-->
-</div>
 </body>
 </html>

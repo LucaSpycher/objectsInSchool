@@ -1,4 +1,4 @@
-console.log('mac and cheese');
+console.log('hot dog');
 
 function createPerson() {
     var stuTeach = document.getElementById('stuTeach').value;
@@ -21,7 +21,7 @@ function createPerson() {
 }
 
 function displaySection(id, num) {
-    var ids = ['createPerson', 'addStudent', 'removeStudent', 'createSection', 'searchStudent', 'sections', 'searchOutput'];
+    var ids = ['createPerson', 'addStudent', 'removeStudent', 'createSection', 'searchStudent', 'sections', 'searchOutput', 'allStudents', 'allTeachers'];
     document.getElementById(id).style.display = 'block';
     for(var i = 0; i < ids.length; i++) {
         if(ids[i] != id) {
@@ -30,7 +30,7 @@ function displaySection(id, num) {
     }
     document.getElementById('searchStudentInput').value = '';
 
-    for (var l = 0; l < 6; l++) {
+    for (var l = 0; l < 8; l++) {
         if(l == num) {
             document.getElementById('navButton' + num.toString()).className = 'clicked';
         } else {
@@ -108,16 +108,18 @@ function createSection() {
     }
 }
 
-function searchStudent() { //generate a list of students with the first name to search for
+function searchStudent() {
     var name = document.getElementById('searchStudentInput').value;
-    document.getElementById('searchOutput').style.display = 'block';
-    document.getElementById('studentSearchList').innerHTML = '';
-    document.getElementById('studentSearchOutput').innerHTML = '';
-    document.getElementById('studentGrade').innerHTML = '';
-    document.getElementById('studentId').innerHTML = '';
-    for(var i = 0; i < students.length; i++) {
-        if(students[i].firstName == name) {
-            document.getElementById('studentSearchList').innerHTML += "<option value='"+students[i].id+"'>"+students[i].firstName+" "+students[i].lastName+"</option>";
+    if(name.length > 0) {
+        document.getElementById('searchOutput').style.display = 'block';
+        document.getElementById('studentSearchList').innerHTML = '';
+        document.getElementById('studentSearchOutput').innerHTML = '';
+        document.getElementById('studentGrade').innerHTML = '';
+        document.getElementById('studentId').innerHTML = '';
+        for (var i = 0; i < students.length; i++) {
+            if (students[i].firstName == name) {
+                document.getElementById('studentSearchList').innerHTML += "<option value='" + students[i].id + "'>" + students[i].firstName + " " + students[i].lastName + "</option>";
+            }
         }
     }
 }
@@ -144,10 +146,29 @@ function showSections() {
     document.getElementById('sections').innerHTML = "";
     for(var i = 0; i < sections.length; i++) {
         var sect = sections[i];
-        document.getElementById('sections').innerHTML += "<div id="+sect.id+"><h3 style='text-align: center'>"+sect.name+"<br><em>"+sect.teacher.firstName+" "+sect.teacher.lastName+"</em></h3></div>";
+        document.getElementById('sections').innerHTML += "<div id="+sect.id+" style='position:relative'><h3 style='text-align: center'>"+sect.name+"<br><em>"+sect.teacher.firstName+" "+sect.teacher.lastName+"</em></h3></div>";
         document.getElementById(sect.id.toString()).innerHTML += "<ul id="+sect.id + 'students' + " class='students'></ul>";
         for(var s = 0; s < sect.students.length; s++) {
             document.getElementById(sect.id + 'students').innerHTML += "<li>"+sect.students[s].firstName+" "+sect.students[s].lastName+"</li>";
         }
+        document.getElementById(sect.id).innerHTML += "<div class='sectMaxSize'><h5>Max Size: "+sect.maxSize+"</h5></div>"
     }
+}
+
+function showAllStudents() {
+    var html = "<ul id='allStudentsList'>";
+    for(var i = 0; i < students.length; i++) {
+        html += "<li><strong>Name: </strong>" + students[i].firstName + " " + students[i].lastName + "&nbsp;&nbsp; <strong>ID:</strong> " + students[i].id + "&nbsp;&nbsp; <strong>Grade:</strong> " +students[i].grade + "</li>";
+    }
+    html += "</ul>";
+    document.getElementById('allStudents').innerHTML = html;
+}
+
+function showAllTeachers() {
+    var html = "<ul id='allTeachersList'>";
+    for(var i = 0; i < teachers.length; i++) {
+        html += "<li><strong>Name:</strong> " + teachers[i].firstName + " " + teachers[i].lastName + "&nbsp;&nbsp; <strong>ID:</strong> " + teachers[i].id + "&nbsp;&nbsp; <strong>Subject:</strong> " +teachers[i].subject + "</li>";
+    }
+    html += "</ul>";
+    document.getElementById('allTeachers').innerHTML = html;
 }

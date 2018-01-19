@@ -21,9 +21,9 @@ nav button {
     border: 0;
     border-radius: 0;
     background-color: inherit;
-    width: 16.666666667%;
+    width: 12.5%;
     float: left;
-    height: 31px;
+    height: 34px;
     color: aliceblue;
     overflow: hidden;
 }
@@ -60,7 +60,7 @@ body>div>* {
     border-radius: 10px;
 }
 
-#sections {
+#sections , #allStudents, #allTeachers{
     background-color: white;
     width: 75%;
     padding: 5px;
@@ -96,7 +96,7 @@ body>div>* {
 
 #emptySpace {
     display: block;
-    height: 31px;
+    height: 34px;
 }
 
 .clicked {
@@ -105,4 +105,14 @@ body>div>* {
 
 .inline {
     display: inline;
+}
+
+.sectMaxSize {
+    position: absolute;
+    top: -15px;
+    right: 5px;
+    height:40px;
+}
+#allStudents li, #allTeachers li {
+    margin: 10px;
 }
