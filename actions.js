@@ -156,19 +156,19 @@ function showSections() {
 }
 
 function showAllStudents() {
-    var html = "<ul id='allStudentsList'>";
+    var html = "<table id='allStudentsTable'><tr><th>Name</th><th>ID</th><th>Grade</th></tr>";
     for(var i = 0; i < students.length; i++) {
-        html += "<li><strong>Name: </strong>" + students[i].firstName + " " + students[i].lastName + "&nbsp;&nbsp; <strong>ID:</strong> " + students[i].id + "&nbsp;&nbsp; <strong>Grade:</strong> " +students[i].grade + "</li>";
+        html += "<tr><td>" + students[i].firstName + " " + students[i].lastName + "</td><td>" + students[i].id + "</td> <td>" + students[i].grade + "</td></tr>";
     }
-    html += "</ul>";
+    html += "</table>";
     document.getElementById('allStudents').innerHTML = html;
 }
 
 function showAllTeachers() {
-    var html = "<ul id='allTeachersList'>";
+    var html = "<table id='allTeachersTable'><tr><th>Name</th><th>ID</th><th>Subject</th></tr>";
     for(var i = 0; i < teachers.length; i++) {
-        html += "<li><strong>Name:</strong> " + teachers[i].firstName + " " + teachers[i].lastName + "&nbsp;&nbsp; <strong>ID:</strong> " + teachers[i].id + "&nbsp;&nbsp; <strong>Subject:</strong> " +teachers[i].subject + "</li>";
+        html += "<tr><td>" + teachers[i].firstName + " " + teachers[i].lastName + "</td><td>" + teachers[i].id + "</td> <td>" + teachers[i].subject + "</td></tr>";
     }
-    html += "</ul>";
+    html += "</table>";
     document.getElementById('allTeachers').innerHTML = html;
 }
